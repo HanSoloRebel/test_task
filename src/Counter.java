@@ -1,11 +1,15 @@
 public class Counter{
-    long counter;
+    private long counter; //No type requirements in the task. Memory saving: long type, not a BigDecimal
     Counter (){
-        setCounter(0);
+        this(0);
     }
-    public void incCounter() throws Exception{
+    Counter (long counter){
+        this.counter = counter;
+    }
+    public long incCounter() throws Exception{
         counter += 1;
-        if (counter - 1 == Long.MAX_VALUE) throw new Exception("Достигнуто максимальное значение счетчика.");
+        if (counter - 1 == Long.MAX_VALUE) throw new Exception("Превышено максимальное значение счетчика.");//check for Max Value reaching
+        else return counter;
     }
     public long getCounter(){
         return counter;
